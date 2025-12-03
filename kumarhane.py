@@ -1,10 +1,7 @@
 import random
-
-
 def kumarhane_simulasyonu(senaryo_turu, simu_sayisi=10000):
     toplam_kasa_kazanci = 0
 
-    # Olasılık ayarları
     if senaryo_turu == 1:
         # Pro vs Junior (Junior: %20, Pro: %70, Beraberlik: %10)
         p1_win_limit = 0.20
@@ -14,7 +11,7 @@ def kumarhane_simulasyonu(senaryo_turu, simu_sayisi=10000):
         p1_win_limit = 0.40
         p2_win_limit = 0.80  # 0.40 + 0.40
 
-    bahis = 10  # Her el ortaya konan miktar (Varsayım)
+    bahis = 10   # Her el ortaya konan miktar
 
     for _ in range(simu_sayisi):
         # Her oyun için paraları sıfırla
@@ -29,7 +26,7 @@ def kumarhane_simulasyonu(senaryo_turu, simu_sayisi=10000):
             # Ortadaki toplam para (Pot)
             pot = bahis * 2
 
-            # --- SENARYO ---
+            # SENARYO
             if zar < p1_win_limit:
                 # P1 Kazanır
                 kasa_payi = pot * 0.10
@@ -59,7 +56,6 @@ def kumarhane_simulasyonu(senaryo_turu, simu_sayisi=10000):
     return toplam_kasa_kazanci / simu_sayisi
 
 
-# --- SONUÇLARI YAZDIR ---
 print("Simülasyon Başlatılıyor...")
 durum1_kazanc = kumarhane_simulasyonu(1)
 durum2_kazanc = kumarhane_simulasyonu(2)
